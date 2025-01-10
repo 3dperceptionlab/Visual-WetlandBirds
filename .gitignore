@@ -1,0 +1,7 @@
+__pycache__/
+launch_docker.sh
+species_classification/runs/
+species_classification/data/*.txt
+species_classification/wandb/
+species_classification/yolov9-c-converted.pt
+processing_scripts/
