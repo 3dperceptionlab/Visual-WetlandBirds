@@ -162,7 +162,7 @@ def run(
                                        workers=workers,
                                        min_items=opt.min_items,
                                        prefix=colorstr(f'{task}: '),
-                                       labels_json='../data/test_bboxes_norm.json')[0]
+                                       labels_json='../processing_scripts/test_bboxes_norm.json')[0]
 
     seen = 0
     confusion_matrix = ConfusionMatrix(nc=nc)
@@ -358,6 +358,7 @@ def parse_opt():
 
 
 def main(opt):
+    print('hola')
     #check_requirements(exclude=('tensorboard', 'thop'))
 
     if opt.task in ('train', 'val', 'test'):  # run normally
@@ -391,5 +392,6 @@ def main(opt):
 
 
 if __name__ == "__main__":
+    print('hola')
     opt = parse_opt()
     main(opt)

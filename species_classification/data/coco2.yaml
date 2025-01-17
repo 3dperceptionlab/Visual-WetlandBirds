@@ -1,7 +1,7 @@
 path:  # dataset root dir
 #train: "./data/train_bboxes.json" # train images (relative to 'path') 118287 images
 train: "../data/train.txt"
-val: "./data/val.txt" # val images (relative to 'path') 5000 images
+val: "./data/test.txt" # val images (relative to 'path') 5000 images
 test: "./data/test.txt" # 20288 of 40670 images, submit to https://competitions.codalab.org/competitions/20794
 
 # Classes

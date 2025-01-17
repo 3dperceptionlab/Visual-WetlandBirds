@@ -182,35 +182,80 @@ class ConfusionMatrix:
         return tp[:-1], fp[:-1]  # remove background class
 
     @TryExcept('WARNING ⚠️ ConfusionMatrix plot failure')
+    # def plot(self, normalize=True, save_dir='', names=()):
+    #     import seaborn as sn
+
+    #     array = self.matrix / ((self.matrix.sum(0).reshape(1, -1) + 1E-9) if normalize else 1)  # normalize columns
+    #     array[array < 0.005] = np.nan  # don't annotate (would appear as 0.00)
+
+    #     fig, ax = plt.subplots(1, 1, figsize=(12, 9), tight_layout=True)
+    #     nc, nn = self.nc, len(names)  # number of classes, names
+    #     sn.set(font_scale=1.0 if nc < 50 else 0.8)  # for label size
+    #     labels = (0 < nn < 99) and (nn == nc)  # apply names to ticklabels
+    #     ticklabels = (names + ['background']) if labels else "auto"
+    #     with warnings.catch_warnings():
+    #         warnings.simplefilter('ignore')  # suppress empty matrix RuntimeWarning: All-NaN slice encountered
+    #         sn.heatmap(array,
+    #                    ax=ax,
+    #                    annot=nc < 30,
+    #                    annot_kws={
+    #                        "size": 8},
+    #                    cmap='Blues',
+    #                    fmt='.2f',
+    #                    square=True,
+    #                    vmin=0.0,
+    #                    xticklabels=ticklabels,
+    #                    yticklabels=ticklabels).set_facecolor((1, 1, 1))
+    #     ax.set_ylabel('True')
+    #     ax.set_ylabel('Predicted')
+    #     ax.set_title('Confusion Matrix')
+    #     fig.savefig(Path(save_dir) / 'confusion_matrix.png', dpi=250)
+    #     plt.close(fig)
     def plot(self, normalize=True, save_dir='', names=()):
         import seaborn as sn
+        # Normaliza las columnas (si procede) y suprime valores muy bajos
+        array = self.matrix / ((self.matrix.sum(0).reshape(1, -1) + 1E-9) if normalize else 1)
+        array[array < 0.005] = np.nan  # para que no aparezca "0.00" anotado
 
-        array = self.matrix / ((self.matrix.sum(0).reshape(1, -1) + 1E-9) if normalize else 1)  # normalize columns
-        array[array < 0.005] = np.nan  # don't annotate (would appear as 0.00)
-
+        # Ajustamos el tamaño de la figura y aplicamos tight_layout
         fig, ax = plt.subplots(1, 1, figsize=(12, 9), tight_layout=True)
-        nc, nn = self.nc, len(names)  # number of classes, names
-        sn.set(font_scale=1.0 if nc < 50 else 0.8)  # for label size
-        labels = (0 < nn < 99) and (nn == nc)  # apply names to ticklabels
+
+        # Ajustamos la escala de fuente según el número de clases
+        nc, nn = self.nc, len(names)
+        # AUMENTAMOS un poco más la escala para mejorar la legibilidad
+        sn.set(font_scale=1.2 if nc < 50 else 1.0)
+
+        labels = (0 < nn < 99) and (nn == nc)  # si hay nombres y coinciden con nc
         ticklabels = (names + ['background']) if labels else "auto"
+
         with warnings.catch_warnings():
-            warnings.simplefilter('ignore')  # suppress empty matrix RuntimeWarning: All-NaN slice encountered
-            sn.heatmap(array,
-                       ax=ax,
-                       annot=nc < 30,
-                       annot_kws={
-                           "size": 8},
-                       cmap='Blues',
-                       fmt='.2f',
-                       square=True,
-                       vmin=0.0,
-                       xticklabels=ticklabels,
-                       yticklabels=ticklabels).set_facecolor((1, 1, 1))
-        ax.set_ylabel('True')
-        ax.set_ylabel('Predicted')
-        ax.set_title('Confusion Matrix')
+            warnings.simplefilter('ignore')  # ignora RuntimeWarning de NaNs
+            heatmap = sn.heatmap(
+                array,
+                ax=ax,
+                annot=nc < 30,               # anotar solo si < 30 clases
+                annot_kws={"size": 10},      # tamaño de fuente en las celdas (subido)
+                cmap='Blues',
+                fmt='.2f',
+                square=True,
+                vmin=0.0,
+                xticklabels=ticklabels,
+                yticklabels=ticklabels
+            )
+            heatmap.set_facecolor((1, 1, 1))
+
+            # INCLINAMOS los textos del eje X para mejor lectura
+            heatmap.set_xticklabels(heatmap.get_xticklabels(), rotation=30, ha='right')
+            # El eje Y normalmente se lee mejor vertical, no es necesario rotarlo
+
+        # Ajustamos texto de ejes y título con mayor tamaño de fuente
+        ax.set_xlabel('Predicted', fontsize=14)
+        ax.set_ylabel('True', fontsize=14)
+        ax.set_title('Confusion Matrix', fontsize=16)
+
         fig.savefig(Path(save_dir) / 'confusion_matrix.png', dpi=250)
         plt.close(fig)
+
 
     def print(self):
         for i in range(self.nc + 1):
