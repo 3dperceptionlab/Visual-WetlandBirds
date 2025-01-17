@@ -60,6 +60,14 @@ Additionally, the species of each bounding box is indicated.
 
 
 
+
+
+https://github.com/user-attachments/assets/b9898b67-ebfd-466d-bb57-3d6821edf0fa
+
+
+
+
+
 ## Species classification
 
 A [species classification](species_classification) baseline based on the YOLOv9 model was developed. The results are shown below:
