@@ -108,5 +108,5 @@ The data from the Visual WetlandBirds dataset is released under the [MIT license
 
 ## Acknowledgements
 
-We would like to thank ”A way of making Europe” European Regional Development Fund (ERDF) and MCIN/AEI/10.13039/501100011033 for supporting this work under the “CHAN-TWIN” project (grant TED2021-130890B- C21 and HORIZON-MSCA-2021-SE-0 action number: 101086387, REMARKABLE, Rural Environmental Monitoring via ultra wide-ARea networKs And distriButed federated Learning. This work has also been supported by three Spanish national and two regional grants for PhD studies, FPU21/00414, FPU22/04200, FPU23/00532 CIACIF/2021/430 and CIACIF/2022/175.
+We would like to thank ”A way of making Europe” European Regional Development Fund (ERDF) and MCIN/AEI/10.13039/501100011033 for supporting this work under the “CHAN-TWIN” project (grant TED2021-130890B- C21 and HORIZON-MSCA-2021-SE-0 action number: 101086387, REMARKABLE, Rural Environmental Monitoring via ultra wide-ARea networKs And distriButed federated Learning. This work is part of the HELEADE project (TSI-100121-2024-24), funded by Spanish Ministry of Digital Processing and by the European Union NextGeneration EU. This work has also been supported by three Spanish national and two regional grants for PhD studies, FPU21/00414, FPU22/04200, FPU23/00532, CIACIF/2021/430 and CIACIF/2022/175.
 
