@@ -99,6 +99,20 @@ For any kind of problems, please read carefully the extended dataset explanation
 If you use this dataset, please cite:
 
 ```
+@article{rodriguez2025visual,
+  title={Visual wetlandbirds dataset: Bird species identification and behavior recognition in videos},
+  author={Rodriguez-Juan, Javier and Ortiz-Perez, David and Benavent-Lledo, Manuel and Mulero-P{\'e}rez, David and Ruiz-Ponce, Pablo and Orihuela-Torres, Adrian and Garcia-Rodriguez, Jose and Sebasti{\'a}n-Gonz{\'a}lez, Esther},
+  journal={Scientific Data},
+  volume={12},
+  number={1},
+  pages={1200},
+  year={2025},
+  publisher={Nature Publishing Group UK London}
+}
+```
+
+
+```
 @misc{rodriguez2025wetlandbirds,
 title={Visual WetlandBirds Dataset: Bird Species Identification and Behaviour Recognition in Videos},
 author={Rodriguez-Juan, Javier and Ortiz-Perez, David and Benavent-Lledo, Manuel and Mulero-Pérez, David and Ruiz-Ponce, Pablo and Orihuela-Torres, Adrian and Garcia-Rodriguez, Jose and Sebastián-González, Esther},
